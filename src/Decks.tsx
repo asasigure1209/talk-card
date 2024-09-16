@@ -11,14 +11,14 @@ function Decks() {
           <DeckItem deckId={1} talkTheme="恋愛" />
           <DeckItem deckId={2} talkTheme="すきな◯◯◯" />
           <DeckItem deckId={3} talkTheme="同棲について" />
-          <div className="p-4 flex items-center justify-center">
+          {/* <div className="p-4 flex items-center justify-center">
             <button
               type="button"
               className="text-2xl font-extrabold rounded-full w-10 h-10 shadow-md bg-white"
             >
               ＋
             </button>
-          </div>
+          </div> */}
         </div>
       </main>
     </>
