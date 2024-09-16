@@ -1,6 +1,6 @@
 import { useState } from "react";
 import clsx from "clsx";
-import mainLogo from "/img/main_logo.png";
+import logo from "/img/card_back_logo.png";
 
 function Card() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +20,7 @@ function Card() {
       className="relative w-[300px] h-[420px]"
     >
       <div className={frontCardClass}>
-        <img src={mainLogo} width="182px" alt="トークカード" />
+        <img src={logo} width="182px" alt="トークカード" />
       </div>
       <div className={backCardClass}>
         <p className="font-bold text-2xl">初めて出会ったときの印象は？</p>
