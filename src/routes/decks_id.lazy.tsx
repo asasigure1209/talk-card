@@ -1,6 +1,11 @@
-import Card from "./components/Card";
+import { createLazyFileRoute } from "@tanstack/react-router";
+import Card from "../components/Card";
 
-function DecksIds() {
+export const Route = createLazyFileRoute("/decks_id")({
+  component: DecksId,
+});
+
+function DecksId() {
   return (
     <>
       <header>
@@ -35,5 +40,3 @@ function DecksIds() {
     </>
   );
 }
-
-export default DecksIds;

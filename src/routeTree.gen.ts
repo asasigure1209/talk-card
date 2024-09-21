@@ -13,24 +13,24 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as DecksidImport } from './routes/decks_id'
 
 // Create Virtual Routes
 
+const DecksidLazyImport = createFileRoute('/decks_id')()
 const DecksLazyImport = createFileRoute('/decks')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
 
+const DecksidLazyRoute = DecksidLazyImport.update({
+  path: '/decks_id',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/decks_id.lazy').then((d) => d.Route))
+
 const DecksLazyRoute = DecksLazyImport.update({
   path: '/decks',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/decks.lazy').then((d) => d.Route))
-
-const DecksidRoute = DecksidImport.update({
-  path: '/decks_id',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
@@ -48,18 +48,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/decks_id': {
-      id: '/decks_id'
-      path: '/decks_id'
-      fullPath: '/decks_id'
-      preLoaderRoute: typeof DecksidImport
-      parentRoute: typeof rootRoute
-    }
     '/decks': {
       id: '/decks'
       path: '/decks'
       fullPath: '/decks'
       preLoaderRoute: typeof DecksLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/decks_id': {
+      id: '/decks_id'
+      path: '/decks_id'
+      fullPath: '/decks_id'
+      preLoaderRoute: typeof DecksidLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -69,42 +69,42 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
-  '/decks_id': typeof DecksidRoute
   '/decks': typeof DecksLazyRoute
+  '/decks_id': typeof DecksidLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
-  '/decks_id': typeof DecksidRoute
   '/decks': typeof DecksLazyRoute
+  '/decks_id': typeof DecksidLazyRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
-  '/decks_id': typeof DecksidRoute
   '/decks': typeof DecksLazyRoute
+  '/decks_id': typeof DecksidLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/decks_id' | '/decks'
+  fullPaths: '/' | '/decks' | '/decks_id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/decks_id' | '/decks'
-  id: '__root__' | '/' | '/decks_id' | '/decks'
+  to: '/' | '/decks' | '/decks_id'
+  id: '__root__' | '/' | '/decks' | '/decks_id'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
-  DecksidRoute: typeof DecksidRoute
   DecksLazyRoute: typeof DecksLazyRoute
+  DecksidLazyRoute: typeof DecksidLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
-  DecksidRoute: DecksidRoute,
   DecksLazyRoute: DecksLazyRoute,
+  DecksidLazyRoute: DecksidLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -120,18 +120,18 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/decks_id",
-        "/decks"
+        "/decks",
+        "/decks_id"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
     },
-    "/decks_id": {
-      "filePath": "decks_id.tsx"
-    },
     "/decks": {
       "filePath": "decks.lazy.tsx"
+    },
+    "/decks_id": {
+      "filePath": "decks_id.lazy.tsx"
     }
   }
 }
