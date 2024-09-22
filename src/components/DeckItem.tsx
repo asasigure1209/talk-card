@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 
 type DeckItem = {
@@ -9,8 +10,11 @@ function DeckItem({ deckId, talkTheme }: DeckItem) {
   const [isShowDetail, setIsShowDetail] = useState(false);
 
   return (
-    <a
-      href={`/decks/${deckId}`}
+    <Link
+      to="/decks/$deckId"
+      params={{
+        deckId: String(deckId),
+      }}
       className="bg-white shadow-md rounded-lg p-4 w-40 h-56 flex items-center justify-center relative"
     >
       <span className="text-lg font-bold">{talkTheme}</span>
@@ -33,7 +37,7 @@ function DeckItem({ deckId, talkTheme }: DeckItem) {
           </button>
         </div>
       )}
-    </a>
+    </Link>
   );
 }
 

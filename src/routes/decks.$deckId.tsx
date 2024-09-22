@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import Card from "../components/Card";
 
 export const Route = createFileRoute("/decks/$deckId")({
@@ -11,9 +11,9 @@ function DecksId() {
     <>
       <header>
         <div className="container mx-auto p-4 flex items-center">
-          <a href="/" className="flex items-cente text-gray-600">
+          <Link to="/decks" className="flex items-cente text-gray-600">
             &lt;一覧へ戻る
-          </a>
+          </Link>
         </div>
       </header>
       <main className="flex-1 flex">
