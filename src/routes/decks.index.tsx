@@ -1,11 +1,14 @@
-import { createFileRoute } from '@tanstack/react-router'
-import DeckItem from '../components/DeckItem'
+import { createFileRoute } from "@tanstack/react-router";
+import DeckItem from "../components/DeckItem";
+import { fetchDecks } from "../utils/decks";
 
-export const Route = createFileRoute('/decks/')({
+export const Route = createFileRoute("/decks/")({
   component: DecksComponent,
-})
+});
 
 function DecksComponent() {
+  const decks = fetchDecks();
+
   return (
     <>
       <h2 className="text-2xl font-bold mb-4 mt-16 text-center text-gray-600">
@@ -13,9 +16,9 @@ function DecksComponent() {
       </h2>
       <main className="flex-1 px-8 py-10 flex flex-col items-center bg-white/60 rounded-t-3xl">
         <div className="grid grid-cols-2 gap-4">
-          <DeckItem deckId={1} talkTheme="恋愛" />
-          <DeckItem deckId={2} talkTheme="すきな◯◯◯" />
-          <DeckItem deckId={3} talkTheme="同棲について" />
+          {decks.map((deck) => (
+            <DeckItem key={deck.id} deckId={deck.id} talkTheme={deck.name} />
+          ))}
           {/* <div className="p-4 flex items-center justify-center">
             <button
               type="button"
@@ -27,5 +30,5 @@ function DecksComponent() {
         </div>
       </main>
     </>
-  )
+  );
 }

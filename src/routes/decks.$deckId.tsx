@@ -1,12 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import Card from "../components/Card";
+import { fetchDeck } from "../utils/decks";
 
 export const Route = createFileRoute("/decks/$deckId")({
-  loader: async ({ params }) => console.log(params),
+  loader: async ({ params: { deckId } }) => fetchDeck(Number.parseInt(deckId)),
   component: DecksId,
 });
 
 function DecksId() {
+  const deck = Route.useLoaderData();
+  console.log(deck);
+
   return (
     <>
       <header>
