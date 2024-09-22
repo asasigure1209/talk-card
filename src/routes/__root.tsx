@@ -12,9 +12,6 @@ export const Route = createRootRoute({
         <Link to="/decks" className="[&.active]:font-bold">
           decks
         </Link>
-        <Link to="/decks_id" className="[&.active]:font-bold">
-          decks
-        </Link>
       </div>
       <hr />
       <div className="max-w-screen-sm sm:max-w-screen-md md:max-w-screen-lg mx-auto min-h-screen flex flex-col bg-gradient-to-bl from-amber-100 to-pink-300">
