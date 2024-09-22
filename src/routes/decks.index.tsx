@@ -1,9 +1,9 @@
-import { createLazyFileRoute } from "@tanstack/react-router";
-import DeckItem from "../components/DeckItem";
+import { createFileRoute } from '@tanstack/react-router'
+import DeckItem from '../components/DeckItem'
 
-export const Route = createLazyFileRoute("/decks")({
+export const Route = createFileRoute('/decks/')({
   component: DecksComponent,
-});
+})
 
 function DecksComponent() {
   return (
@@ -27,5 +27,5 @@ function DecksComponent() {
         </div>
       </main>
     </>
-  );
+  )
 }

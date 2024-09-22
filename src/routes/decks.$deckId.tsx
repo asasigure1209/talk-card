@@ -1,7 +1,8 @@
-import { createLazyFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import Card from "../components/Card";
 
-export const Route = createLazyFileRoute("/decks_id")({
+export const Route = createFileRoute("/decks/$deckId")({
+  loader: async ({ params }) => console.log(params),
   component: DecksId,
 });
 
