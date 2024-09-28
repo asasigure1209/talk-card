@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+// import { useState } from "react";
 
 type DeckItem = {
   deckId: number;
@@ -7,7 +7,7 @@ type DeckItem = {
 };
 
 function DeckItem({ deckId, talkTheme }: DeckItem) {
-  const [isShowDetail, setIsShowDetail] = useState(false);
+  // const [isShowDetail, setIsShowDetail] = useState(false);
 
   return (
     <Link
@@ -26,7 +26,7 @@ function DeckItem({ deckId, talkTheme }: DeckItem) {
         <span className="block w-1 h-1 bg-gray-500 rounded-full" />
         <span className="block w-1 h-1 bg-gray-500 rounded-full" />
         <span className="block w-1 h-1 bg-gray-500 rounded-full" />
-      </button> */}
+      </button>
       {isShowDetail && (
         <div className="absolute top-2 right-7 flex flex-col text-sm bg-white shadow p-1 rounded">
           <button type="button" className="text-blue-500">
@@ -36,7 +36,7 @@ function DeckItem({ deckId, talkTheme }: DeckItem) {
             削除
           </button>
         </div>
-      )}
+      )} */}
     </Link>
   );
 }
