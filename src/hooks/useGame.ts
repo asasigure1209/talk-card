@@ -1,15 +1,5 @@
 import { useState } from "react";
-
-type card = {
-  id: number;
-  name: string;
-};
-
-type deck = {
-  id: number;
-  name: string;
-  cards: card[];
-};
+import type { deck } from "../types/game";
 
 export const useGame = (deck: deck) => {
   const [stockPile, setStockPile] = useState(deck.cards);

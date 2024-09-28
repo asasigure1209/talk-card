@@ -1,13 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
 import DeckItem from "../components/DeckItem";
 import { fetchDecks } from "../utils/decks";
+import { useEffect, useState } from "react";
+import type { deck } from "../types/game";
 
 export const Route = createFileRoute("/decks/")({
   component: DecksComponent,
 });
 
 function DecksComponent() {
-  const decks = fetchDecks();
+  const [decks, setDecks] = useState<deck[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      setDecks(await fetchDecks());
+    })();
+  }, []);
 
   return (
     <>

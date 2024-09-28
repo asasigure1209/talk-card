@@ -1,11 +1,16 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import Card from "../components/Card";
 import { fetchDeck } from "../utils/decks";
 import { useGame } from "../hooks/useGame";
 import { useState } from "react";
 
 export const Route = createFileRoute("/decks/$deckId")({
-  loader: async ({ params: { deckId } }) => fetchDeck(Number.parseInt(deckId)),
+  loader: async ({ params: { deckId } }) => {
+    const deck = await fetchDeck(Number.parseInt(deckId));
+    if (!deck) throw notFound();
+
+    return deck;
+  },
   component: DecksId,
 });
 
