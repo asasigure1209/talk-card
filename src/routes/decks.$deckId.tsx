@@ -50,25 +50,26 @@ function DecksId() {
         </div>
 
         <div className="absolute bottom-4 right-4">
-          {isLastCard ? (
-            <Link
-              to="/decks"
-              className="bg-blue-400 text-white rounded-md p-3 shadow-lg"
-            >
-              終了する
-            </Link>
-          ) : (
-            <button
-              type="button"
-              className="bg-blue-400 text-white rounded-md p-3 shadow-lg"
-              onClick={() => {
-                setIsTalkTime(false);
-                discard();
-              }}
-            >
-              次のターンへ
-            </button>
-          )}
+          {isTalkTime &&
+            (isLastCard ? (
+              <Link
+                to="/decks"
+                className="bg-blue-400 text-white rounded-md p-3 shadow-lg"
+              >
+                終了する
+              </Link>
+            ) : (
+              <button
+                type="button"
+                className="bg-blue-400 text-white rounded-md p-3 shadow-lg"
+                onClick={() => {
+                  setIsTalkTime(false);
+                  discard();
+                }}
+              >
+                次のターンへ
+              </button>
+            ))}
         </div>
       </main>
     </>
