@@ -3,6 +3,7 @@ import DeckItem from "../components/DeckItem";
 import { fetchDecks } from "../utils/decks";
 import { useEffect, useState } from "react";
 import type { deck } from "../types/game";
+import LogoHeader from "../components/LogoHeader";
 
 export const Route = createFileRoute("/decks/")({
   component: DecksComponent,
@@ -19,6 +20,7 @@ function DecksComponent() {
 
   return (
     <>
+      <LogoHeader />
       <h2 className="text-2xl font-bold mb-4 mt-16 text-center text-gray-600">
         トークテーマ一覧
       </h2>
